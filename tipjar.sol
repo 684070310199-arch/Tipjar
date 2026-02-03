@@ -29,7 +29,9 @@ contract SmartTipJar {
         uint256 amountPerPerson = totalBalance / staffList.length;
 
         for (uint256 i = 0; i < staffList.length; i++) {
-            (bool success, ) = payable(staffList[i]).call{value: amountPerPerson}("");
+            (bool success, ) = payable(staffList[i]).call{
+                value: amountPerPerson
+            }("");
             require(success);
         }
     }
