@@ -1,42 +1,49 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.31;
 
-contract SmartTipJar {
+contract tips {
+
     address public owner;
-    address[] public staffList;
+
+    struct Waitress {
+        address payable walletAddress;
+        string name;
+        uint percent;
+    }
+
+    Waitress[] public waitress;
 
     constructor() {
         owner = msg.sender;
     }
 
-    receive() external payable {}
-
-    function addTips() public payable {
-        require(msg.value > 0);
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only owner can call");
+        _;
     }
 
-    function addStaff(address _staff) public {
-        require(msg.sender == owner);
-        staffList.push(_staff);
+    function addtips() payable public {}
+
+    function viewtips() public view returns(uint) {
+        return address(this).balance;
     }
 
-    function distributeTips() public {
-        require(msg.sender == owner);
-        uint256 totalBalance = address(this).balance;
-        require(totalBalance > 0);
-        require(staffList.length > 0);
+    function addWaitress(address payable _walletAddress, string memory _name, uint _percent) public onlyOwner {
+        bool waitressExist = false;
 
-        uint256 amountPerPerson = totalBalance / staffList.length;
+        for (uint i = 0; i < waitress.length; i++) {
+            if (waitress[i].walletAddress == _walletAddress) {
+                waitressExist = true;
+                break;
+            }
+        }
 
-        for (uint256 i = 0; i < staffList.length; i++) {
-            (bool success, ) = payable(staffList[i]).call{
-                value: amountPerPerson
-            }("");
-            require(success);
+        if (waitressExist == false) {
+            waitress.push(Waitress(_walletAddress, _name, _percent));
         }
     }
 
-    function viewTips() public view returns (uint256) {
-        return address(this).balance;
+    function viewWaitress() public view returns(Waitress[] memory) {
+        return waitress;
     }
 }
