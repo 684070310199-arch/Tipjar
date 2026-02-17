@@ -42,15 +42,35 @@
 			},
 			{
 				"inputs": [],
-				"name": "owner",
+				"name": "distributeBalance",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getTotalPercent",
 				"outputs": [
 					{
-						"internalType": "address",
+						"internalType": "uint256",
 						"name": "",
-						"type": "address"
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_walletAddress",
+						"type": "address"
+					}
+				],
+				"name": "removeWaitress",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -95,35 +115,6 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "waitress",
-				"outputs": [
-					{
-						"internalType": "address payable",
-						"name": "walletAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "string",
-						"name": "name",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "percent",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -154,11 +145,11 @@
 	},
 	"sources": {
 		"tipjar.sol": {
-			"keccak256": "0x22a4f3fa5fa3b78e97cb34e0a97325173ed99e41736f9c334684f9d5f6daaf5e",
+			"keccak256": "0x8eef8eeb8c47d8d626ab5e58bd9371e161f523a78ea2119ce665bd6f6647f73e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2ad559ac048130b47eabca6e2bd9e246edb1de7200810045a424b092ae304da6",
-				"dweb:/ipfs/Qmc6jaNVVyUtWchvc4iGUf8xz1imCNr6RsYErfwAW5zkhu"
+				"bzz-raw://6601bf2104512b8f6b19b2ee9c241a46ccb674869c9d3a9aa09cf2f1563679f0",
+				"dweb:/ipfs/QmUfzcpY1FAVDNzhiNXa76Ai3xtKeCC3QLsfJCQziWmHNo"
 			]
 		}
 	},
